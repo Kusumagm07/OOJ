@@ -1,0 +1,58 @@
+abstract class shape {
+    protected int d1;
+    protected int d2;
+
+    public abstract void printarea();
+}
+
+class rectangle extends shape {
+    public rectangle(int length, int width) {
+        this.d1 = length;
+        this.d2 = width;
+    }
+
+    @Override
+    public void printarea() {
+        int area = d1 * d2;
+        System.out.println("Area of rectangle: " + area);
+    }
+}
+
+class triangle extends shape {
+    public triangle(int base, int height) {
+        this.d1 = base;
+        this.d2 = height;
+    }
+
+    @Override
+    public void printarea() {
+        double area = 0.5 * d1 * d2;
+        System.out.println("Area of triangle: " + area);
+    }
+}
+
+class circle extends shape {
+    public circle(int radius) {
+        this.d1 = radius;
+        this.d2 = 0; 
+    }
+
+    @Override
+    public void printarea() {
+        double area = Math.PI * d1 * d1; 
+        System.out.println("Area of circle: " + area);
+    }
+}
+
+public class shapearea {
+    public static void main(String[] args) {
+        shape rectangleShape = new rectangle(5, 10);
+        rectangleShape.printarea();
+
+        shape triangleShape = new triangle(5, 10);
+        triangleShape.printarea();
+
+        shape circleShape = new circle(7);
+        circleShape.printarea();
+    }
+}
