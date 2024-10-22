@@ -1,0 +1,50 @@
+abstract class Animal {
+    public abstract void eat();
+    public abstract void sleep();
+}
+
+class Lion extends Animal {
+    public void eat() {
+        System.out.println("LION");
+        System.out.println("It is a carnivorous animal.");
+    }
+    public void sleep() {
+        System.out.println("It sleeps whole day.");
+    }
+}
+
+class Tiger extends Animal {
+    public void eat() {
+        System.out.println("Tiger");
+        System.out.println("It is also a carnivorous animal.");
+    }
+    public void sleep() {
+        System.out.println("It is also a sleeping animal.");
+    }
+}
+
+class Deer extends Animal {
+    public void eat() {
+        System.out.println("Deer");
+        System.out.println("It is a herbivore.");
+    }
+    public void sleep() {
+        System.out.println("It sleeps whole day and wakes up at night.");
+    }
+}
+
+public class Kusuma402 {
+    public static void main(String[] args) {
+        Lion l1 = new Lion();
+        l1.eat();
+        l1.sleep();
+       
+        Tiger t1 = new Tiger();
+        t1.eat();
+        t1.sleep();
+     
+        Deer d1 = new Deer();
+        d1.eat();
+        d1.sleep();
+    }
+}
