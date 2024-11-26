@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+// Custom Exception class
+class WrongAge extends Exception {
+    public WrongAge(String message) {
+        super(message);
+    }                                                                                                       
+}
+
+// Base class Father
+class Father {
+    int fatherAge;
+
+    // Constructor of Father class
+    public Father(int age) throws WrongAge {
+        if (age < 0) {
+            throw new WrongAge("Father's age cannot be negative.");
+        }
+        this.fatherAge = age;
+        System.out.println("Father's age is: " + fatherAge);
+    }
+}
+
+// Derived class Son
+class Son extends Father {
+    int sonAge;
+
+    // Constructor of Son class
+    public Son(int fatherAge, int sonAge) throws WrongAge {
+        super(fatherAge); // Call the constructor of Father
+        if (sonAge < 0) {
+            throw new WrongAge("Son's age cannot be negative.");
+        }
+        if (sonAge >= fatherAge) {
+            throw new WrongAge("Son's age cannot be greater than or equal to Father's age.");
+        }
+        this.sonAge = sonAge;
+        System.out.println("Son's age is: " + sonAge);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        try {
+            System.out.print("Enter Father's age: ");
+            int fatherAge = scanner.nextInt();
+
+            System.out.print("Enter Son's age: ");
+            int sonAge = scanner.nextInt();
+
+            // Create an instance of Son which invokes the constructor of Father
+            Son son = new Son(fatherAge, sonAge);
+        } catch (WrongAge e) {
+            System.out.println("Exception: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
