@@ -1,31 +1,38 @@
 class MessageThread extends Thread {
-    private String message;
-    private int interval;
+    private final String message;
+    private final int interval;
 
     public MessageThread(String message, int interval) {
         this.message = message;
-        this.interval = interval;
+        this.interval = interval; // Fixed the typo
     }
 
     @Override
     public void run() {
-        while (true) {
-            try {
+        try {
+            while (!isInterrupted()) { // Corrected condition
                 System.out.println(message);
                 Thread.sleep(interval);
-            } catch (InterruptedException e) {
-                System.out.println(e);
             }
+        } catch (InterruptedException e) {
+            System.out.println(message + " thread interrupted.");
         }
     }
+}
 
-    public static void main(String[] args) {
-        // Create and start the first thread to display "BMS College of Engineering" every 10 seconds
-        MessageThread thread1 = new MessageThread("BMS College of Engineering", 10000); // 10000 milliseconds = 10 seconds
-        thread1.start();
+public class ThreadExample {
+    public static void main(String[] args) throws InterruptedException {
+        MessageThread collegeThread = new MessageThread("BMS College of Engineering", 10000);
+        MessageThread cseThread = new MessageThread("CSE", 2000);
 
-        // Create and start the second thread to display "CSE" every 2 seconds
-        MessageThread thread2 = new MessageThread("CSE", 2000); // 2000 milliseconds = 2 seconds
-        thread2.start();
+        collegeThread.start();
+        cseThread.start();
+
+        Thread.sleep(15000); // Let threads run for 15 seconds
+
+        collegeThread.interrupt();
+        cseThread.interrupt();
+
+        System.out.println("Program terminated.");
     }
 }
