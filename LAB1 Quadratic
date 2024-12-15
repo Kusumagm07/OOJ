@@ -11,7 +11,7 @@ class Solu {
         Scanner s = new Scanner(System.in);
 
         // Get user input
-        System.out.println("Jayashree\n24BECS410\n3B batch 4\nEnter the values of a, b, and c:");
+        System.out.println("Enter the values of a, b, and c:");
 
         // Read the values of a, b, and c
         System.out.println("enter a ");
