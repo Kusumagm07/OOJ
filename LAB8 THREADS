@@ -4,13 +4,13 @@ class MessageThread extends Thread {
 
     public MessageThread(String message, int interval) {
         this.message = message;
-        this.interval = interval; // Fixed the typo
+        this.interval = interval; 
     }
 
     @Override
     public void run() {
         try {
-            while (!isInterrupted()) { // Corrected condition
+            while (!isInterrupted()) { 
                 System.out.println(message);
                 Thread.sleep(interval);
             }
@@ -28,7 +28,7 @@ public class ThreadExample {
         collegeThread.start();
         cseThread.start();
 
-        Thread.sleep(15000); // Let threads run for 15 seconds
+        Thread.sleep(15000); 
 
         collegeThread.interrupt();
         cseThread.interrupt();
