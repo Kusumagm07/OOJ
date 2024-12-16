@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-// Custom Exception class
+
 class WrongAge extends Exception {
     public WrongAge(String message) {
         super(message);
     }                                                                                                       
 }
 
-// Base class Father
+
 class Father {
     int fatherAge;
 
@@ -21,7 +21,7 @@ class Father {
     }
 }
 
-// Derived class Son
+
 class Son extends Father {
     int sonAge;
 
